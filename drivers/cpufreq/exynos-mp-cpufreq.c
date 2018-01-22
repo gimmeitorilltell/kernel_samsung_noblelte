@@ -1451,6 +1451,7 @@ inline ssize_t store_core_freq(const char *buf, size_t count,
 	return count;
 }
 
+#ifdef CONFIG_SEC_PM
 inline ssize_t set_boot_low_freq(const char *buf, size_t count)
 {
 	int input;
@@ -1478,6 +1479,9 @@ inline ssize_t set_boot_low_freq(const char *buf, size_t count)
 
 	return count;
 }
+#else
+inline ssize_t set_boot_low_freq(const char *buf, size_t count) { return 0; }
+#endif // CONFIG_SEC_PM
 
 static ssize_t show_cluster1_freq_table(struct kobject *kobj,
 				struct attribute *attr, char *buf)
