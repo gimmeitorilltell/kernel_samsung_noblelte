@@ -572,7 +572,7 @@ int
 bcm_ether_atoe(const char *p, struct ether_addr *ea)
 {
 	int i = 0;
-	char *ep;
+	char *ep = 0;
 
 	for (;;) {
 		ea->octet[i++] = (char) bcm_strtoul(p, &ep, 16);
@@ -589,7 +589,7 @@ bcm_atoipv4(const char *p, struct ipv4_addr *ip)
 {
 
 	int i = 0;
-	char *c;
+	char *c = 0;
 	for (;;) {
 		ip->addr[i++] = (uint8)bcm_strtoul(p, &c, 0);
 		if (*c++ != '.' || i == IPV4_ADDR_LEN)

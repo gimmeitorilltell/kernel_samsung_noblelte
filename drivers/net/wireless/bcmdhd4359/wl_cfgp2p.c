@@ -1927,7 +1927,7 @@ wl_cfgp2p_set_p2p_noa(struct bcm_cfg80211 *cfg, struct net_device *ndev, char* b
 			iovar_len -= sizeof(wl_p2p_sched_desc_t);
 		}
 
-		ret = wldev_iovar_setbuf(wl_to_p2p_bss_ndev(cfg, type),
+		ret = wldev_iovar_setbuf(wl_to_p2p_bss_ndev(cfg, type=0),
 			"p2p_noa", &dongle_noa, iovar_len, cfg->ioctl_buf,
 			WLC_IOCTL_MAXLEN, &cfg->ioctl_buf_sync);
 
@@ -2001,7 +2001,7 @@ wl_cfgp2p_set_p2p_ps(struct bcm_cfg80211 *cfg, struct net_device *ndev, char* bu
 		bssidx = wl_get_bssidx_by_wdev(cfg, ndev->ieee80211_ptr);
 		if (wl_cfgp2p_find_type(cfg, bssidx, &conn_idx) != BCME_OK)
 			return BCME_ERROR;
-		dev = wl_to_p2p_bss_ndev(cfg, conn_idx);
+		dev = wl_to_p2p_bss_ndev(cfg, conn_idx=0);
 		if (ctw != -1) {
 			cfg->p2p->ops.ctw = ctw;
 			ret = 0;
@@ -2054,7 +2054,7 @@ wl_cfgp2p_set_p2p_ecsa(struct bcm_cfg80211 *cfg, struct net_device *ndev, char* 
 		if (wl_cfgp2p_find_type(cfg, bssidx, &conn_idx) != BCME_OK) {
 			return BCME_ERROR;
 		}
-		dev = wl_to_p2p_bss_ndev(cfg, conn_idx);
+		dev = wl_to_p2p_bss_ndev(cfg, conn_idx=0);
 		if (ch <= 0 || bw <= 0) {
 			CFGP2P_ERR(("Negative value not permitted!\n"));
 			return BCME_ERROR;
