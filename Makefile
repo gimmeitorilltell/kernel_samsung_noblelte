@@ -1,7 +1,7 @@
 VERSION = 3
 PATCHLEVEL = 10
 SUBLEVEL = 61
-EXTRAVERSION = -TeamNexus
+EXTRAVERSION =
 NAME = TOSSUG Baby Fish
 
 # *DOCUMENTATION*
@@ -200,7 +200,7 @@ CROSS_COMPILE   ?= ../PLATFORM/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-and
 
 ifeq ($(shell uname -s),Linux)
   ifeq ($(shell uname -m),x86_64)
-    override CROSS_COMPILE	:= /home/albe96/toolchain/linux-x86/aarch64/bin/aarch64-linux-gnu-
+    override CROSS_COMPILE	:= /home/ifiritsfury/toolchain/linux-x86/aarch64/bin/aarch64-linux-gnu-
   endif
 endif
 
